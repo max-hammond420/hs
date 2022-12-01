@@ -14,7 +14,26 @@ sum' (x:xs) = x + sum' xs
 
 bmiTell :: (RealFloat a) => a -> a -> String
 bmiTell weight height
-    | bmi <= skinny = "underweight"
-    | bmi <= normal = "normal"
-    | bmi <= overweight = "overweight"
-    | otherwise <= "certified whale"
+    | weight / height ^ 2 <= 18.5 = "underweight"
+    | weight / height ^ 2 <= 25.0 = "normal"
+    | weight / height ^ 2 <= 30.0 = "overweight"
+    | otherwise = "certified whale"
+
+max' :: (Ord a) => a -> a -> a
+max' a b 
+    | a > b = a
+    | otherwise = b
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+    | a > b = GT
+    | a == b = EQ
+    | otherwise = LT
+
+bmiTell' :: (RealFloat a) => a -> a -> String
+bmiTell' height weight
+    | bmi <= 18.5 = "underweight"
+    | bmi <= 25.0 = "normal"
+    | bmi <= 30.0 = "overweight"
+    | otherwise = "certified whale"
+    where bmi = weight / height ^ 2
