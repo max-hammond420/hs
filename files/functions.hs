@@ -37,3 +37,8 @@ bmiTell' height weight
     | bmi <= 30.0 = "overweight"
     | otherwise = "certified whale"
     where bmi = weight / height ^ 2
+
+describeList :: [a] -> String
+describeList xs = "The list is " ++ case xs of [] -> "empty"
+                                               [x] -> "a singleton"
+                                               xs -> "a longer list"
