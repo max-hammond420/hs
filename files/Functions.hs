@@ -42,3 +42,21 @@ describeList :: [a] -> String
 describeList xs = "The list is " ++ case xs of [] -> "empty"
                                                [x] -> "a singleton"
                                                xs -> "a longer list"
+
+
+multThree :: (Num a) => a -> a -> a -> a
+multThree x y z = x * y * z
+
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f (f x)
+
+
+zipWidth' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWidth' _ [] _ = []
+zipWidth' _ _ [] = []
+zipWidth' f (x:xs) (y:ys) = f x y : zipWidth' f xs ys
+
+
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = g
+    where g x y = f y x
